@@ -10,7 +10,7 @@ import retrofit2.http.Query
 interface PixabayApi {
 
     @GET("/api/")
-    suspend fun fetchImages(@Query("key") key : String = BuildConfig.API_KEY,
+    suspend fun getImages(@Query("key") key : String = BuildConfig.API_KEY,
                             @Query("q") q : String,
                             @Query("lang") lang : String = "pt") : Response<PixabayImages>
 }
