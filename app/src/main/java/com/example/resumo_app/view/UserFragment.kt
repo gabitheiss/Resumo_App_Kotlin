@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import com.example.resumo_app.R
 import com.example.resumo_app.databinding.UserFragmentBinding
 import com.example.resumo_app.view_model.UserViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class UserFragment : Fragment(R.layout.user_fragment) {
 
     companion object {

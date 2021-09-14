@@ -8,7 +8,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.resumo_app.R
 import com.example.resumo_app.databinding.FeedFragmentBinding
 import com.example.resumo_app.view_model.FeedViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FeedFragment : Fragment(R.layout.feed_fragment) {
 
     companion object {
