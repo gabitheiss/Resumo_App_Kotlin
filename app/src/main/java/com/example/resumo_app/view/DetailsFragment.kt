@@ -26,7 +26,8 @@ class DetailsFragment : Fragment(R.layout.details_fragment) {
 
         //popBackStack para fechar a tela - fechar o fragment
         binding.buttonClose.setOnClickListener{
-            findNavController().popBackStack()
+            findNavController().navigate(R.id.action_detailsFragment_to_userFragment)
+
         }
     }
 
