@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'kotlin-android'
+
 }
 
 android {
@@ -16,6 +17,9 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //chave da api
+        buildConfigField "String", "API_KEY", "\"2792622-0a1c81f4324139625144c2609\""
     }
 
     buildTypes {
