@@ -28,9 +28,15 @@ class AdapterImages : ListAdapter<Image , ImageViewHolder>(ImageDiffUtilCallback
       }
     }
 
+    fun update(newList: List<Image>, clear: Boolean = false) {
+        if (clear) {
+            listOfImages.clear()
+        }
+        listOfImages.addAll(newList)
+        submitList(listOfImages)
+    }
+
 }
-
-
 
 
 class ImageViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
@@ -42,6 +48,7 @@ class ImageViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
             .load(image.largeImageURL)
             .centerCrop()
             .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .into(binding.imageViewFeed)
     }
 
 }
