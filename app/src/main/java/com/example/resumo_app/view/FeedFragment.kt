@@ -26,7 +26,7 @@ class FeedFragment : Fragment(R.layout.feed_fragment) {
     private val adapterImages = AdapterImages()
 
     private val observeImages = Observer<List<Image>>{
-        adapterImages.update(it)
+        adapterImages.submitList(it)
     }
 
 

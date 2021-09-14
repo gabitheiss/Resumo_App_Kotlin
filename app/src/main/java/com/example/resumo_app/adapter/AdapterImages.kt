@@ -13,7 +13,6 @@ import com.example.resumo_app.model.Image
 
 class AdapterImages : ListAdapter<Image , ImageViewHolder>(ImageDiffUtilCallback()) {
 
-    val listOfImages = mutableListOf<Image>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
         LayoutInflater.from(parent.context).inflate(R.layout.itens_list,parent,false).apply {
@@ -26,14 +25,6 @@ class AdapterImages : ListAdapter<Image , ImageViewHolder>(ImageDiffUtilCallback
       getItem(position).let {image ->
           holder.bind(image)
       }
-    }
-
-    fun update(newList: List<Image>, clear: Boolean = false) {
-        if (clear) {
-            listOfImages.clear()
-        }
-        listOfImages.addAll(newList)
-        submitList(listOfImages)
     }
 
 }
