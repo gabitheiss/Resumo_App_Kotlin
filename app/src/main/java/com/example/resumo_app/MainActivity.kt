@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 
 class MainActivity : AppCompatActivity() {
 
+    //appBar é a parte superior
     private lateinit var appBarConfiguration : AppBarConfiguration
     private lateinit var navController: NavController
 
