@@ -33,7 +33,7 @@ class Pixabayrepository @Inject constructor(private val service: PixabayApi,
         }
     }
 
-    suspend fun fetchFromDb(listOf: List<ImageModel>): List<ImageModel> {
+    suspend fun fetchFromDb(): List<ImageModel> {
         return withContext(Dispatchers.Default) {
             pixabayDAO.fetch()
         }
