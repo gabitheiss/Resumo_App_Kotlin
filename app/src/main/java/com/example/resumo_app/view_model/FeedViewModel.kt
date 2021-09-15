@@ -27,7 +27,7 @@ class FeedViewModel @Inject constructor(private val repository: Pixabayrepositor
     fun fetchImages(page: Int = 1) {
         viewModelScope.launch {
 
-            //buscar imagens no banco
+            //salvar primeira pagina no banco, se for a primeira vez
             val listFromDb = repository.fetchFromDb()
             if (listFromDb.isNotEmpty() && onlyFirstTime){
                 _image.value = listFromDb
