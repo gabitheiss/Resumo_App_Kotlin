@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2375" />
+        <entry key="app/src/main/res/layout/activity_splash.xml" value="0.2234375" />
         <entry key="app/src/main/res/layout/details_fragment.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/feed_fragment.xml" value="0.2375" />
         <entry key="app/src/main/res/layout/header_search.xml" value="0.2375" />
