@@ -12,18 +12,26 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FeedViewModel @Inject constructor(private val repository : Pixabayrepository) : ViewModel() {
+class FeedViewModel @Inject constructor(private val repository: Pixabayrepository) : ViewModel() {
 
     private val _image = MutableLiveData<List<Image>>()
-    val image : LiveData<List<Image>> = _image
+    val image: LiveData<List<Image>> = _image
 
+    private val _page = MutableLiveData<Int>()
+    val page: LiveData<Int> = _page
 
-    fun fetchImages(q: String = ""){
+    fun fetchImages(q: String = "", page: Int = 1) {
         viewModelScope.launch {
-            val returnImages = repository.fetchImages(q = q)
+            val returnImages = repository.fetchImages(q = q, page = page)
+
             returnImages?.let {
                 _image.value = it
             }
         }
+    }
+
+    fun nextPage() {
+        //se for null é 0
+        _page.value = (_page.value ?: 0) + 1
     }
 }

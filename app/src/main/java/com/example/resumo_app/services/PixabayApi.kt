@@ -12,5 +12,6 @@ interface PixabayApi {
     @GET("/api/")
     suspend fun getImages(@Query("key") key : String = BuildConfig.API_KEY,
                             @Query("q") q : String,
-                            @Query("lang") lang : String = "pt") : Response<PixabayImages>
+                            @Query("lang") lang : String = "pt",
+                            @Query("page") page: Int = 1) : Response<PixabayImages>
 }

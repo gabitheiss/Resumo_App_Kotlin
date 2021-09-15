@@ -11,26 +11,35 @@ import com.example.resumo_app.R
 import com.example.resumo_app.databinding.ItensListBinding
 import com.example.resumo_app.model.Image
 
-class AdapterImages : ListAdapter<Image , ImageViewHolder>(ImageDiffUtilCallback()) {
+class AdapterImages : ListAdapter<Image, ImageViewHolder>(ImageDiffUtilCallback()) {
 
+    val listOfImages = mutableListOf<Image>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-        LayoutInflater.from(parent.context).inflate(R.layout.itens_list,parent,false).apply {
+        LayoutInflater.from(parent.context).inflate(R.layout.itens_list, parent, false).apply {
             return ImageViewHolder(this)
         }
 
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-      getItem(position).let {image ->
-          holder.bind(image)
-      }
+        getItem(position).let { image ->
+            holder.bind(image)
+        }
+    }
+
+    fun update(newList: List<Image>, clear: Boolean = false) {
+        if (clear) {
+            listOfImages.clear()
+        }
+        listOfImages.addAll(newList)
+        submitList(listOfImages.toMutableList())
     }
 
 }
 
 
-class ImageViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     val binding = ItensListBinding.bind(itemView)
 
