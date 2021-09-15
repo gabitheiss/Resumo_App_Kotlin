@@ -9,11 +9,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.resumo_app.R
 import com.example.resumo_app.databinding.ItensListBinding
-import com.example.resumo_app.model.Image
+import com.example.resumo_app.model.ImageModel
 
-class AdapterImages : ListAdapter<Image, ImageViewHolder>(ImageDiffUtilCallback()) {
+class AdapterImages : ListAdapter<ImageModel, ImageViewHolder>(ImageDiffUtilCallback()) {
 
-    val listOfImages = mutableListOf<Image>()
+    val listOfImages = mutableListOf<ImageModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
         LayoutInflater.from(parent.context).inflate(R.layout.itens_list, parent, false).apply {
@@ -28,7 +28,7 @@ class AdapterImages : ListAdapter<Image, ImageViewHolder>(ImageDiffUtilCallback(
         }
     }
 
-    fun update(newList: List<Image>, clear: Boolean = false) {
+    fun update(newList: List<ImageModel>, clear: Boolean = false) {
         if (clear) {
             listOfImages.clear()
         }
@@ -43,9 +43,9 @@ class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     val binding = ItensListBinding.bind(itemView)
 
-    fun bind(image: Image) {
+    fun bind(imageModel: ImageModel) {
         Glide.with(itemView)
-            .load(image.largeImageURL)
+            .load(imageModel.largeImageURL)
             .centerCrop()
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .into(binding.imageViewFeed)

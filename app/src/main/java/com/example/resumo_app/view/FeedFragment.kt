@@ -5,16 +5,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.resumo_app.R
 import com.example.resumo_app.adapter.AdapterImages
 import com.example.resumo_app.adapter.HeaderAdapterFilter
 import com.example.resumo_app.databinding.FeedFragmentBinding
-import com.example.resumo_app.model.Image
+import com.example.resumo_app.model.ImageModel
 import com.example.resumo_app.view_model.FeedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,7 +33,7 @@ class FeedFragment : Fragment(R.layout.feed_fragment) {
         viewModel.searchFor(it)
     }
 
-    private val observeImages = Observer<List<Image>>{
+    private val observeImages = Observer<List<ImageModel>>{
         adapterImages.update(it,clearList)
     }
 
