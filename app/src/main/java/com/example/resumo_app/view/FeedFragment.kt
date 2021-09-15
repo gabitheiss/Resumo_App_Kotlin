@@ -6,10 +6,13 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.resumo_app.R
 import com.example.resumo_app.adapter.AdapterImages
+import com.example.resumo_app.adapter.HeaderAdapterFilter
 import com.example.resumo_app.databinding.FeedFragmentBinding
 import com.example.resumo_app.model.Image
 import com.example.resumo_app.view_model.FeedViewModel
@@ -25,9 +28,16 @@ class FeedFragment : Fragment(R.layout.feed_fragment) {
     private lateinit var viewModel: FeedViewModel
     private lateinit var binding : FeedFragmentBinding
     private val adapterImages = AdapterImages()
+    private lateinit var adaptersConcat : ConcatAdapter
+    var clearList = false
+
+    private  var headerAdapterFilter = HeaderAdapterFilter {
+        clearList = true
+        viewModel.searchFor(it)
+    }
 
     private val observeImages = Observer<List<Image>>{
-        adapterImages.update(it)
+        adapterImages.update(it,clearList)
     }
 
     private val observerPages = Observer<Int> {
@@ -47,17 +57,20 @@ class FeedFragment : Fragment(R.layout.feed_fragment) {
 
         viewModel.image.observe(viewLifecycleOwner, observeImages)
         viewModel.page.observe(viewLifecycleOwner, observerPages)
+        adaptersConcat = ConcatAdapter(headerAdapterFilter, adapterImages)
 
         setupRecyclerView()
 
         binding.buttonNextPage.setOnClickListener{
+            clearList = false
             viewModel.nextPage()
         }
     }
 
     fun setupRecyclerView() = with(binding.feedRecyclerView){
-        adapter = adapterImages
-        layoutManager = GridLayoutManager(requireContext(),2)
+        adapter = adaptersConcat
+        layoutManager = LinearLayoutManager(requireContext())
+        //layoutManager = GridLayoutManager(requireContext(),2)
         viewModel.nextPage()
     }
 

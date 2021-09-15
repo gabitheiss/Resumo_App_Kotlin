@@ -6,7 +6,8 @@
 
 
     <EditText
-        android:id="@+id/ediTextSearchOnHeader"
+        android:id="@+id/ediTextSearch"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Pesquisar imagens"
