@@ -26,7 +26,7 @@ class SplashViewModel @Inject constructor(private val pixabayrepository: Pixabay
                 pixabayrepository.insert(it)
             }
             //depois de terminar tudo, ainda esperamos mais 2s
-            delay(2000)
+            delay(4000)
             _isLoading.value = false
         }
     }

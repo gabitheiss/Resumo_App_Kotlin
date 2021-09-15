@@ -23,7 +23,9 @@ class MainActivity : AppCompatActivity() {
 
         //estanciando as variaveis para criar a funcao de voltar - abaixo
         navController = findNavController(R.id.navHost)
-        appBarConfiguration = AppBarConfiguration.Builder(navController.graph).build()
+        //passar os fragments que nao terão a seta de voltar
+        appBarConfiguration = AppBarConfiguration.Builder(R.id.splashFragment, R.id.feedFragment).build()
+        //appBarConfiguration = AppBarConfiguration.Builder(navController.graph).build()
         setupActionBarWithNavController(navController, appBarConfiguration)
 
     }
